@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 60,
+                      height: 30,
                     ),
                     Form(
                       key: _formKey,
@@ -100,7 +100,7 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Dont't have an account? ",
+                    "Don't have an account? ",
                     style: kBodyText.copyWith(
                       color:
                           themeFlag ? AppColors.creamColor : AppColors.mirage,
@@ -151,7 +151,7 @@ class LoginScreen extends StatelessWidget {
 
         SnackUtil.showSnackBar(
           context: context,
-          text: "Login Successfull",
+          text: "Login Successful",
           textColor: AppColors.creamColor,
           backgroundColor: Colors.green,
         );
