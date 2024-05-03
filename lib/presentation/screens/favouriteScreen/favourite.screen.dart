@@ -54,7 +54,7 @@ class FavouriteScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                height: _height * 620,
+                height: _height * 600,
                 child: Consumer<FavouriteNotifier>(
                   builder: (context, notifier, _) {
                     return FutureBuilder(
