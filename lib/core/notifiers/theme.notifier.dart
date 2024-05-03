@@ -14,7 +14,7 @@ class ThemeNotifier with ChangeNotifier {
   }
 
   toggleTheme() {
-    _darktheme = !_darktheme;
+    _darktheme = _darktheme;
     _saveToPrefs();
     notifyListeners();
   }

@@ -33,7 +33,7 @@ class SettingScreen extends StatelessWidget {
             ),
             UserCard(
               cardColor: AppColors.rawSienna,
-              userName: userData.userName!,
+              userName: userData.userName,
               userProfileUrl: userData.userPhoto!,
               onTap: () {},
             ),
@@ -70,7 +70,7 @@ class SettingScreen extends StatelessWidget {
                     user_name: userData.userName!,
                     user_email: userData.userEmail!,
                     user_phoneNo: userData.userPhoneNo!,
-                    user_image: userData.userPhoto!,
+                    user_image: userData.userPhoto,
                   ),
                 );
               },

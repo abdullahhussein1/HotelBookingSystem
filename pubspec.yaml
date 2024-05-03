@@ -32,6 +32,7 @@ dependencies:
   supabase: ^0.3.4+1
   url_launcher: ^6.1.5
   google_fonts: ^4.0.4
+  supabase_flutter: ^0.3.3
 
 dev_dependencies:
   flutter_launcher_icons: "^0.9.2"
