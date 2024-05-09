@@ -134,7 +134,7 @@ class FavouriteItem extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      '₹ ${favouriteModel.rooms.roomPrice.toString()} Per Room',
+                      '\$${favouriteModel.rooms.roomPrice.toString()} Per Room',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

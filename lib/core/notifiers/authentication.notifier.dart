@@ -6,7 +6,7 @@ import 'package:metroom/core/service/authentication.service.dart';
 import 'package:metroom/core/service/cache.service.dart';
 import 'package:supabase/supabase.dart';
 
-class AuthenticationNotifer extends ChangeNotifier {
+class AuthenticationNotifer with ChangeNotifier {
   final AuthenticationService _authenticationService = AuthenticationService();
   String? error;
   int? userId;
@@ -15,24 +15,26 @@ class AuthenticationNotifer extends ChangeNotifier {
   String? userEmail;
   String? userPhoneNo;
 
-  Future<bool> signUp({
-    required UserModel userModel,
-  }) async {
+  Future<bool> signUp({required UserModel userModel}) async {
     try {
       GotrueSessionResponse response = await _authenticationService.signUp(
         email: userModel.userEmail,
         password: userModel.userPassword,
       );
+
       if (response.error == null) {
         notifyListeners();
+
         var dataAdded = await addUserToDatabase(userModel: userModel);
-        if (dataAdded!.hasError) {
-          error = dataAdded.error!.message;
+
+        if (dataAdded?.error != null) {
+          error = dataAdded!.error!.message;
           notifyListeners();
           return false;
         } else {
-          userId = dataAdded.data[0]['user_id'];
-          getUserDataByID(user_id: userId!);
+          userId = dataAdded!.data![0]['user_id'];
+          await getUserDataByID(user_id: userId!);
+
           CacheService.setInt(
             key: AppKeys.userData,
             value: userId!,
@@ -46,26 +48,26 @@ class AuthenticationNotifer extends ChangeNotifier {
       }
     } catch (e) {
       print(e);
+      return false;
     }
-    return false;
   }
 
-  Future<bool> login({
-    required String email,
-    required String password,
-  }) async {
+  Future<bool> login({required String email, required String password}) async {
     try {
       GotrueSessionResponse response =
           await _authenticationService.login(email: email, password: password);
+
       if (response.error == null) {
         notifyListeners();
+
         var userData = await getUserDataByEmail(useremail: email);
-        if (userData!.hasError) {
-          error = userData.error!.message.toString();
+
+        if (userData?.error != null) {
+          error = userData!.error!.message.toString();
           return false;
         } else {
-          userId = userData.data[0]['user_id'];
-          getUserDataByID(user_id: userId!);
+          userId = userData!.data![0]['user_id'];
+          await getUserDataByID(user_id: userId!);
 
           CacheService.setInt(
             key: AppKeys.userData,
@@ -79,6 +81,7 @@ class AuthenticationNotifer extends ChangeNotifier {
         return false;
       }
     } catch (e) {
+      print(e);
       return false;
     }
   }
@@ -97,8 +100,8 @@ class AuthenticationNotifer extends ChangeNotifier {
       return response;
     } catch (e) {
       print(e.toString());
+      return null;
     }
-    return null;
   }
 
   Future<PostgrestResponse?> getUserDataByEmail(
@@ -112,11 +115,11 @@ class AuthenticationNotifer extends ChangeNotifier {
       return response;
     } catch (e) {
       print(e.toString());
+      return null;
     }
-    return null;
   }
 
-  Future getUserDataByID({required int user_id}) async {
+  Future<void> getUserDataByID({required int user_id}) async {
     try {
       PostgrestResponse response = await SupabaseAPI.supabaseClient
           .from("users")
@@ -124,11 +127,11 @@ class AuthenticationNotifer extends ChangeNotifier {
           .eq("user_id", user_id)
           .execute();
 
-      if (response.hasError) {
+      if (response.error != null) {
         await CacheService.deleteKey(key: AppKeys.userData);
       } else {
         var data = response.data;
-        userId = data[0]['user_id'];
+        userId = data![0]['user_id'];
         userEmail = data[0]['user_email'];
         userPhoto = data[0]['user_profile_url'];
         userName = data[0]['user_name'];
@@ -138,7 +141,6 @@ class AuthenticationNotifer extends ChangeNotifier {
     } catch (e) {
       print(e.toString());
     }
-    return null;
   }
 
   Future<bool> updateUserData({
@@ -147,20 +149,25 @@ class AuthenticationNotifer extends ChangeNotifier {
     required String userMobileNo,
     required String userPhoto,
   }) async {
-    final isUpdated = await _authenticationService.updateUserData(
-      useremail: useremail,
-      username: username,
-      userMobileNo: userMobileNo,
-      userPhoto: userPhoto,
-    );
+    try {
+      final isUpdated = await _authenticationService.updateUserData(
+        useremail: useremail,
+        username: username,
+        userMobileNo: userMobileNo,
+        userPhoto: userPhoto,
+      );
 
-    if (isUpdated.hasError) {
-      error = isUpdated.error!.message;
+      if (isUpdated.error != null) {
+        error = isUpdated.error!.message;
+        return false;
+      } else {
+        print(isUpdated.data);
+        await getUserDataByID(user_id: userId!);
+        return true;
+      }
+    } catch (e) {
+      print(e.toString());
       return false;
-    } else {
-      print(isUpdated.data);
-      getUserDataByID(user_id: userId!);
-      return true;
     }
   }
 }

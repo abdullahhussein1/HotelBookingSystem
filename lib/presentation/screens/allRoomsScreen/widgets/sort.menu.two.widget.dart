@@ -42,8 +42,8 @@ class _CustomSortMenuTwo extends State<SortMenuTwo> {
         dropdownMaxHeight: 250,
         dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
         dropdownDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: themeFlag ? AppColors.mirage : AppColors.creamColor,
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.black,
         ),
         dropdownElevation: 8,
         offset: const Offset(0, 8),

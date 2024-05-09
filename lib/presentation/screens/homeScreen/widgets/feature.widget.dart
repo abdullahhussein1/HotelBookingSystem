@@ -80,7 +80,7 @@ class FeatureRooms extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '₹ ${roomModel.roomPrice.toString()} Per Room',
+                      '\$${roomModel.roomPrice.toString()} Per Room',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

@@ -121,7 +121,7 @@ class BookingItem extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 6, top: 2),
                           child: Text(
-                            'Price : ₹ ${bookingModel.rooms!.roomPrice.toString()}',
+                            'Price : \$ ${bookingModel.rooms!.roomPrice.toString()}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(

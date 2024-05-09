@@ -39,7 +39,7 @@ Widget buildRoomData({
                     ),
                   ),
                   Text(
-                    "\₹ ${roomModel.roomPrice.toString()}",
+                    "\$ ${roomModel.roomPrice.toString()}",
                     style: TextStyle(
                         color: AppColors.yellowish,
                         fontWeight: FontWeight.bold,
@@ -212,7 +212,7 @@ Widget buildRoomData({
               height: 10,
             ),
             RoomFooter(
-             roomModel: roomModel,
+              roomModel: roomModel,
             ),
             const SizedBox(
               height: 15,

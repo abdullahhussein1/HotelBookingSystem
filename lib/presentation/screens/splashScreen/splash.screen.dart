@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'MetRoom',
+              'Hotel Booker',
               style: TextStyle(
                 color: themeFlag ? AppColors.creamColor : AppColors.mirage,
                 fontSize: 50.0,

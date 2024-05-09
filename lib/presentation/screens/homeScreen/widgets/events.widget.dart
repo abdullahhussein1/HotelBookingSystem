@@ -86,7 +86,7 @@ class EventsItem extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '₹ ${eventsModel.eventCharges.toString()} Per Head',
+                      '\$${eventsModel.eventCharges.toString()} Per Head',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

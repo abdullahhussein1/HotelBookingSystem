@@ -51,7 +51,7 @@ class _LavaState extends State<Lava> {
       case ConnectivityResult.none:
       default:
         return MaterialApp(
-          title: 'Met Room',
+          title: 'Hotel Booker',
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.generateRoute,
           initialRoute: AppRouter.noNetWorkRoute,
@@ -74,7 +74,7 @@ class Core extends StatelessWidget {
     return Consumer<ThemeNotifier>(
       builder: (context, notifier, _) {
         return MaterialApp(
-          title: 'Met Room',
+          title: 'Hotel Booker',
           theme: notifier.darkTheme ? darkTheme : lightTheme,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.generateRoute,

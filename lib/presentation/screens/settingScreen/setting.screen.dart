@@ -53,6 +53,8 @@ class SettingScreen extends StatelessWidget {
               title: 'Dark mode',
               subtitle: "Change App Theme",
               trailing: Switch.adaptive(
+                activeColor: Colors.black,
+                activeTrackColor: Colors.blue,
                 value: _themeNotifier.darkTheme,
                 onChanged: (value) {
                   _themeNotifier.darkTheme = !value;

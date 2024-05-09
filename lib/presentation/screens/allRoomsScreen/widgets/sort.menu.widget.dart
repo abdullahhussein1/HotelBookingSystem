@@ -41,8 +41,8 @@ class _CustomSortMenuOne extends State<SortMenuOne> {
         dropdownWidth: 160,
         dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
         dropdownDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: themeFlag ? AppColors.mirage : AppColors.creamColor,
+          borderRadius: BorderRadius.circular(25),
+          color: Colors.black,
         ),
         dropdownElevation: 8,
         offset: const Offset(0, 8),
