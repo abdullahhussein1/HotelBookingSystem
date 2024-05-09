@@ -36,7 +36,7 @@ class AboutScreen extends StatelessWidget {
             height: mediaQueryHeight / 20,
           ),
           Text(
-            'MetRoom',
+            'HotelBooker',
             textAlign: TextAlign.left,
             style: kBodyText.copyWith(
               fontSize: 25,
@@ -74,7 +74,7 @@ class AboutScreen extends StatelessWidget {
             height: mediaQueryHeight / 40,
           ),
           Text(
-            'For Any Queries ,\n Contact : dev.adnani26@gmail.com',
+            'For Any Queries ,\n Contact : hotelbooking@gmail.com',
             textAlign: TextAlign.center,
             style: kBodyText.copyWith(
               fontSize: 16,

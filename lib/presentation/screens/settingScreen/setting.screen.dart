@@ -119,7 +119,7 @@ class SettingScreen extends StatelessWidget {
                 backgroundColor: Colors.purple,
               ),
               title: 'About',
-              subtitle: "Learn more about MetRoom'App",
+              subtitle: "Learn more about Hotel Booker App",
             ),
             SettingsItem(
               themeFlag: themeFlag,
